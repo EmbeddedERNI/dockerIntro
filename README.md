@@ -17,7 +17,7 @@ sudo reboot
 
 ```
 
-# hello world
+# example : hello world
 
 ```bash
 # Display Docker version and info
@@ -39,11 +39,26 @@ docker container ls -aq
 
 ```
 
-# example demo1
+# example : running alpine linux
+
+Download and run the alpine linux
+
+```bash
+
+docker pull alpine
+
+docker run -it --rm alpine /bin/ash
+
+uname -a
+
+```
+
+
+# example demo1 : build / run / store
 
 Example for building, running and storing a docker app from scratch.
 
-Get the example files:
+Get the example files from `https://github.com/EmbeddedERNI/dockerIntro`
 
 ```bash
 
@@ -116,8 +131,10 @@ docker run username/repository:tag
 
 ```
 
+Check the image in the docker hub: https://hub.docker.com/u/carnicer/
 
-# example demo1swarm
+
+# example demo1swarm : a small swarm
 
 Example that uses image created in previous example to form a swarm.
 
@@ -160,5 +177,37 @@ docker stack rm erniswarm
 docker swarm leave --force
 
 
+```
+
+# example world cup : running on different platforms
+
+Example that uses image created in previous example to form a swarm.
+
+On windows, do:
+
+```bash
+docker pull cedricbl/world-cup-2018-cli-dashboard
+
+docker run -ti -e TZ=Europe/Longyearbyen  cedricbl/world-cup-2018-cli-dashboard
+```
+
+On the raspberry, do the same:
+
+```bash
+docker inspect world-cup-2018-cli-dashboard | grep -i Architecture
+```
+
+Build (takes a long time).
+
+```bash
+docker build -t world-cup-2018-cli-dashboard-rpi github.com/cedricblondeau/world-cup-2018-cli-dashboard
+#docker build -t world-cup-2018-cli-dashboard github.com/cedricblondeau/world-cup-2018-cli-dashboard
+```
+
+```bash
+docker pull carnicer/worldcup-rpi
+```
+
+```bash
 ```
 
